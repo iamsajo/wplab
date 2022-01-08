@@ -1,0 +1,77 @@
+body {
+  font-family: sans-serif;
+  background-image: url(images/banner/bg3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  width: 400px;
+  margin: 7% auto;
+  border-radius: 25px;
+  background-color: rgba(50, 13, 62, 0.2);
+  box-shadow: 0 0 17px #333;
+  height: auto;
+}
+
+.header {
+  text-align: center;
+  padding-top: 75px;
+}
+
+.header h1 {
+  color: #333;
+  font-size: 45px;
+  margin-bottom: 80px;
+}
+
+.main {
+  text-align: center;
+}
+
+.main input,
+button {
+  width: 300px;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding-left: 40px;
+  box-sizing: border-box;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
+
+.main button {
+  padding-left: 0;
+  background-color: #320d3e;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-bottom: 70px;
+
+  background-color: #fff;
+  color: #320d3e;
+}
+
+.main button:hover {
+  box-shadow: 2px 2px 5px #555;
+  color: #fff;
+  background-color: #320d3e;
+}
+.main input:hover {
+  box-shadow: 2px 2px 5px #555;
+  background-color: #ddd;
+}
+
+.main span {
+  position: relative;
+}
+
+.main i {
+  position: absolute;
+  left: 15px;
+  color: #333;
+  font-size: 16px;
+  top: 2px;
+}
