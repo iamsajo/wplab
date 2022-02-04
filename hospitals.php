@@ -43,6 +43,7 @@
 }
 
 
+
 </style>
 
 </head>
@@ -97,7 +98,7 @@
                 </div>
                 </tr>
                 <tr>
-                <td colspan="3"><button formaction="#">View full details</button></td>
+                <td colspan="3" ><button formaction="#">View full details</button></td>
                 </tr>
                 <tr>
                 <td colspan="3"><hr></td>
