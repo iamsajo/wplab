@@ -1,3 +1,5 @@
+<?php include ('connection.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +14,6 @@
 
 <style>
     
-/* .line {
-  background-color: #320d3e;
-  padding: 10px;
-  width: 99%;
-  margin-top:10px;
-  border-radius: 20px;
-  color: white;
-} */
 .hsptl{
     width: 98%;
     height:auto;
@@ -61,29 +55,56 @@
 </div>
 
 <center><table class="hsptl">
-    <tr>
-        <th colspan="3" align="center">ABCD HOSPITAL</th>
-    </tr>
-    <tr>
+
+    
+<?php
+    
+    $sql = "SELECT id, name, place, address, contact, is_active, img FROM hospital where is_active = 'True'";
+    $retval = mysqli_query( $conn, $sql);
+    $rows = mysqli_fetch_all($retval, MYSQLI_ASSOC );
+    foreach((array)$rows as $row){
+        $id=$row['id'];
+        $name=$row['name'];
+        $place=$row['place'];
+        $address=$row['address'];
+        $contact=$row['contact'];
+        $active=$row['is_active'];
+        $imgsrc=$row['img'];
+
+        echo '
+        
+        <tr>
+        <th colspan="3" align="center">'.$name.'</th>
+        </tr>
+        <tr>
         <div>
-            <td>
-                <img src="images/hsptls/amrita1.jpg" alt="hospital">
+        <td>
+        <img src="'.$imgsrc.'" alt="hospital">
                 
             </td>
             <td align="center">
-                <h3>ABCD Hospital</h3>
-                <p><b>Address:</b> ABCD Hospital, ABCD Road, ABCD City</p>
-                <p><b>Contact:</b> +91-123-456789</p>
-            </td>
-            <td align="center">
+                <h3>'.$name.'</h3>
+                <p><b>'.$address.'</p>
+                <p><b>Contact:</b>'.$contact.'</p>
+                </td>
+                <td align="center">
                 <h3>Specilization</h3>
                 <p>Cardiology</p>
                 <p>Neurology</p>
                 <p>Orthopedics</p>
-
-            </td>
-        </div>
-    </tr>
+                
+                </td>
+                </div>
+                </tr>
+                <tr>
+                <td colspan="3"><button formaction="#">View full details</button></td>
+                </tr>
+                <tr>
+                <td colspan="3"><hr></td>
+                </tr>
+                ';
+    }
+?>
 </table></center>
 
 

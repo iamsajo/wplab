@@ -1,3 +1,25 @@
+<?php 
+include ('connection.php'); 
+
+if (isset($_POST['submit'])){
+    $uname=$_POST['usrname'];
+    $pwd=$_POST['passwd'];
+    $email=$_POST['email'];
+    $ph=$_POST['mobile'];
+
+    $sql="INSERT INTO user(usr_name,pass,email,contact) VALUES('$uname','$pwd','$email','$ph')";
+    $result = mysqli_query($conn,$sql);
+    if ($result){
+        die(header("Location: login.php"));
+        echo "Successfully registered";
+    }
+    else{
+        echo "Error: ".$sql."<br>".mysqli_error($conn);
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -14,30 +36,27 @@
             <h1><u style="color:#320d3e">Signup</u></h1>
         </div>
         <div class="main">
-            <form action="#" method="">
+            <form action="#" method="POST">
                 <span>
                     <i class="fa fa-user"></i>
-                    <input type="text" placeholder="Username" name="">
+                    <input type="text" placeholder="Username" name="usrname">
                 </span><br>
                 <span>
                     <span>
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" name="">
+                        <input type="email" placeholder="Email" name="email">
                     </span><br>
 
                     <span>
                         <i class="fa fa-lock"></i>
-                        <input type="password" placeholder="password" name="">
+                        <input type="password" placeholder="password" name="passwd">
                     </span><br>
-                    <span>
-                        <i class="fa fa-lock"></i>
-                        <input type="password" placeholder="Confirm Password" name="">
-                    </span><br>
+
                     <span>
                         <i class="fas fa-phone-square-alt"></i>
-                        <input type="tel" name="" id="" placeholder="Mobile">
+                        <input type="tel" name="mobile" id="" placeholder="Mobile">
                     </span>
-                    <button>Signup</button>
+                    <button name="submit" type="submit">Signup</button>
 
             </form>
         </div>

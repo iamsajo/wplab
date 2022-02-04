@@ -54,7 +54,7 @@
             height: 2rem;
             border-radius: 10px;
         }
-        td{
+        .inner2  td{
             display: inline;
         }
     </style>

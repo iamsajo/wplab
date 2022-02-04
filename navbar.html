@@ -1,63 +1,103 @@
-<div class="container" id="main">
-    <ul>
-        <div>
-            <li>
-                <img src="images/logo/logo3.png" alt="MediCare">
-            </li>
+<?php include ('connection.php') ?>
 
-        </div>
-        <div>
-            <li>
-                &nbsp; <a href="#">Home</a> &nbsp;
-            </li>
+<!DOCTYPE html>
+<html lang="en">
 
-        </div>
-        <div>
-            <li>
-                &nbsp; <a href="#">Contact Us</a> &nbsp;
-            </li>
+<head>
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #card {
+            margin-right: 10px;
 
-        </div>
-        <div>
-            <li>
-                &nbsp; <a href="hospitals.php">Hospitals</a> &nbsp;
-            </li>
+        }
 
-        </div>
-        <div>
-            <li>
-                &nbsp; <a href="doctor.php">Doctors</a> &nbsp;
-            </li>
+        #card img {
+            height: auto !important;
+        }
 
-        </div>
-        <div>
-            <li>
-                &nbsp; <a href="#">Specilization</a> &nbsp;
-            </li>
+        .line h3 {
+            margin-left: 10px;
+        }
 
-        </div>
-        <div>
-            <li>
-                &nbsp; <a href="login.html">Login</a> &nbsp;
-            </li>
+        .hsptl {
+            width: 60%;
+        }
 
-        </div>
-        <div>
-            <li>
-                &nbsp; <a href="signup.html">Signup</a> &nbsp;
-            </li>
+        .hsptl img {
+            width: 50%;
+        }
+    </style>
+</head>
 
-        </div>
-        <div id="search">
-            <li>
-                <form action=" #">
-                    &nbsp;&nbsp;<input type="search" value="search" name="search" style="height: 34px">
-                    <button type="button">
-                        <i class="fas fa-search fa-1x"></i></button>
+<body>
 
-                </form>
-            </li>
-        </div>
 
-    </ul>
-</div>
+    <div class="container" id="main">
+        <ul>
+            <div>
+                <li>
+                    <img src="images/logo/logo3.png" alt="MediCare">
+                </li>
+
+            </div>
+            <div>
+                <li>
+                    &nbsp; <a href="home.php">Home</a> &nbsp;
+                </li>
+
+            </div>
+            <div>
+                <li>
+                    &nbsp; <a href="#">Contact Us</a> &nbsp;
+                </li>
+
+            </div>
+            <div>
+                <li>
+                    &nbsp; <a href="hospitals.php">Hospitals</a> &nbsp;
+                </li>
+
+            </div>
+            <div>
+                <li>
+                    &nbsp; <a href="doctor.php">Doctors</a> &nbsp;
+                </li>
+
+            </div>
+            <div>
+                <li>
+                    &nbsp; <a href="#">Specilization</a> &nbsp;
+                </li>
+
+            </div>
+            <div>
+                <li>
+                    &nbsp; <a href="login.html">Login</a> &nbsp;
+                </li>
+
+            </div>
+            <div>
+                <li>
+                    &nbsp; <a href="signup.html">Signup</a> &nbsp;
+                </li>
+
+            </div>
+            <div id="search">
+                <li>
+                    <form action=" #">
+                        &nbsp;&nbsp;<input type="search" value="search" name="search" style="height: 34px">
+                        <button type="button">
+                            <i class="fas fa-search fa-1x"></i></button>
+
+                    </form>
+                </li>
+            </div>
+
+        </ul>
+    </div>
