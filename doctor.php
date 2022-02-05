@@ -4,58 +4,55 @@
 </div>
 
 <center><table class="hsptl">
-    <tr>
+
+<?php
+    $sql = "SELECT name,exp,education,hspl,field,fees, contact,img FROM doctor where is_active = 'True'";
+    $retval = mysqli_query( $conn, $sql);
+    $rows = mysqli_fetch_all($retval, MYSQLI_ASSOC );
+    foreach((array)$rows as $row){
+        $name=$row['name'];
+        $exp=$row['exp'];
+        $education=$row['education'];
+        $hsptl=$row['hspl'];
+        $field=$row['field'];
+        $fees=$row['fees'];
+        $contact=$row['contact'];
+        $imgsrc=$row['img'];
+
+        echo '
+        
+        <tr>
+        <th colspan="3" align="center">'.$name.'</th>
+        </tr>
+        <tr>
         <div>
-            <td>
-                <img src="images/dr-pic/man.png" alt="hospital">
+        <td>
+        <img src="'.$imgsrc.'" alt="hospital">
                 
             </td>
             <td align="center">
-                <h3><b>Name:</b>    Dr. Paul John</h3>
-                <p><b>Experience:</b>   23</p>
-                <p><b>Education:</b>    MBBS,DM</p>
-                <p><b>Specialist:</b>   Neurologist</p>
-                <p><b>Fee:</b>  Rs.500</p>
-                <p><b>Address:</b>  ABCD Hospital, ABCD</p>
-                <p><b>Contact:</b>  9876543210</p>
-            </td>
-            
-            
-        </div>
-    </tr>
-    <tr>
-        <td>
-            <a href="#"><button>Take an Appointment</button></a>
-    </td>
-    </tr>
+                <h3>'.$name.'</h3>
+                <p><b>Experience:</b>'.$exp.'</p>
+                <p><b>Education:</b>'.$education.'</p>
+                <p><b>Hospital:</b>'.$hsptl.'</p>
+                <p><b>Field:</b>'.$field.'</p>
+                <p><b>Fees:</b>'.$fees.'</p>
+                <p><b>Contact:</b>'.$contact.'</p>
+                </td>
+                </div>
+                </tr>
+                <tr>
+                <td>
+                <a href="appointment.php"><button>Take an Appointment</button></a>
+                </td>
+                </tr>
+                <tr>
+                <td colspan="3"><hr><hr>
+                </tr>
+                ';
+    }
+?>
 </table></center>
-
-<center><table class="hsptl">
-    <tr>
-        <div>
-            <td>
-                <img src="images/dr-pic/man (1).png" alt="hospital">
-                
-            </td>
-            <td align="center">
-                <h3><b>Name:</b>    Dr. Jinu Johnson</h3>
-                <p><b>Experience:</b>   12</p>
-                <p><b>Education:</b>    MBBS</p>
-                <p><b>Specialist:</b>   Neurologist</p>
-                <p><b>Fee:</b>  Rs400</p>
-                <p><b>Address:</b>  qwerty Hospital, qwerty</p>
-                <p><b>Contact:</b>  9876345210</p>
-            </td>
-                
-            
-        </div>
-    </tr>
-    <tr>
-        <td>
-            <a href="#"><button>Take an Appointment</button></a>
-    </td>
-    </tr>
-</table></center>
-
+<br><br>
 
 <?php include ('footer.html') ?>

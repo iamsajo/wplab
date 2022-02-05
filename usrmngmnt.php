@@ -1,25 +1,45 @@
 <?php include ('connection.php') ?>
 
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="admn.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-</head>
-
-<body>
     
 
-<?php 
+<?php   
+
+    if(isset($_POST['submit'])){
+        $name=$_POST['name'];
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+        $contact=$_POST['contact'];
+        if(empty($_POST['is_admin'])){
+            $is_admin='False';
+        }
+        else{
+            $is_admin='True';
+        }
+        if(empty($_POST['is_active'])){
+            $is_staff='False';
+        }
+        else{
+            $is_staff='True';
+        }
+        if(empty($_POST['is_active'])){
+            $is_active='False';
+        }
+        else{
+            $is_active='True';
+        }
+
+        $query="INSERT INTO user(usr_name,email,pass,contact,is_active,is_admin,is_staff) VALUES('$name','$email','$password','$contact','$is_active','$is_admin','$is_staff')";
+        $result=mysqli_query($conn,$query);
+        if($result){
+            echo "<script>alert('user added successfully')</script>";
+        }
+        else{
+            echo "Error: ".$query."<br>".mysqli_error($conn);
+            echo "<script>alert('user not added')</script>";
+        }
+    }
+
 
     if(isset($_POST['false'])){
         $id = $_REQUEST['id'];
@@ -47,12 +67,14 @@
         
 ?>
 
+<?php include ('admin-top.php') ?>
 
-    <div class="div1">
+
+    <div class="div1" >
         <div align="center">
             <h3>USER &ensp;MANAGEMENT</h3>
         </div>
-        <div>
+        <div style="color:#ffff;">
             <table width="100%"cellspacing="5px" cellpadding="5px">
                 <caption><h4>USER&ensp; LIST</h4></caption>
                 <tr>
@@ -104,10 +126,84 @@
                 ?>
                 
             </table>
-           
         </div>
-        <center><div class="admin_button"><a href="admin.php">Back to Admin</a></center>
+        
+    </div>
+
+
+    <div class="div-add">
+        <div align="center">
+            <h3>ADD&ensp; USER</h3>
+        </div>
+        <div>
+            <form action="#" method="POST">
+                <table width="100%" cellspacing="20">
+                    <tr>
+                        <th>
+                            <label for="name">Name</label>
+                        </th>
+                        <td>
+                            <input type="text" name="name">
+                        </td>
+                    </tr>
+                    <tr>
+                    <th>
+                            <label for="email">Email</label>
+                        </th>
+                        <td>
+                            <input type="email" name="email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="password">Password</label>
+                        </th>
+                        <td>
+                            <input type="password" name="password">
+                        </td>
+                    </tr>
+                    <tr>
+                    <th>
+                            <label for="contact">Contact</label>
+                        </th>
+                        <td>
+                            <input type="text" name="contact">
+                        </td>
+                    </tr>
+                    <tr>
+                    <th>
+                            <label for="is_admin">IsAdmin</label>
+                        </th>
+                        <td>
+                            <input type="checkbox" name="is_admin">
+                        </td>
+                    </tr>
+                    <tr>
+                    <th>
+                            <label for="is_staff">IsStaff</label>
+                        </th>
+                        <td>
+                            <input type="checkbox" name="is_staff">
+                        </td>
+                    </tr>
+                    <tr>
+                    <th>
+                            <label for="is_active">IsActive</label>
+                        </th>
+                        <td>
+                            <input type="checkbox" name="is_active">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" name="submit" value="ADD">
+                        </td>
+                </table>
+
+            </form>
         </div>
     </div>
-    </body>
-    </html>
+
+
+
+<?php include ('admin-footer.html') ?>

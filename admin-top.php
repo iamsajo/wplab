@@ -1,6 +1,21 @@
 <?php include ('connection.php') ?>
 
 
+<!-- redirect the page if its not a admin -->
+
+<?php 
+
+    // if(isset($_SESSION['admin'])){
+    //     echo "<script>alert('welcome back admin')</script>";
+    // }
+    // else{
+    //     echo "<script>alert('you are not an admin')</script>";
+    //     header("Location: home.php");
+    // }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +27,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .div-add {
+            border: 2px solid #fff;
+            width: 60%;
+            margin: 15%;
+            border-radius: 20px;
+            background-image: linear-gradient(#020024, #5b0979);
+            color: #ffff;
+        }
+        
+
+    </style>
     
 </head>
 
@@ -40,9 +68,3 @@
 
    
 
-
-
-    <div class="log"><form action="#" method="get"><input type="submit" value=" ADMIN LOGOUT" style="height:2rem;width:200px;border-radius:10px;"></form></div>
-<!-- </div> -->
-</body>
-</html>

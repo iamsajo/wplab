@@ -9,11 +9,13 @@ if (isset($_POST['submit'])){
 	if ($result){
 		if (mysqli_num_rows($result)>0){
 			$row = mysqli_fetch_array($result);
-			$_SESSION['id']=$row['id'];
 			if($row['id']==1){
-				die(header("Location: admin.php"));
+				$_SESSION['admin']='True';
+				die(header("Location: usrmngmnt.php"));
 			}
 			else{
+				$_SESSION['user']=$row['id'];
+				$_SESSION['name']=$row['usr_name'];
 				die(header("Location: home.php"));
 			}
 		}

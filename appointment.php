@@ -130,18 +130,22 @@
                                 </select>
                             </td>
                         </tr>
-                                    
+                         <tr>
+                             <td>
+
+                                 <div style="margin:10px;">
+                                     <button type="submit" formaction="home.php" style="width:100px; height:40px;border-radius: 10px;color:#030a2b;background-color: antiquewhite;font-size: 15px;font-weight: bold;">
+                                                         Submit</button>
+                                 </div>
+                             </td>
+                         </tr>           
                     </table>
 
                 </div>
-                    <div style="margin:10px;">
-                    <input type="submit" value="BOOK NOW"
-                                            style="width:100px; height:40px;border-radius: 10px;color:#030a2b;background-color: antiquewhite;font-size: 15px;font-weight: bold;">
-                    </div>
-                </div>
-
+            </div>
+            
         </form>
-    </div>
+</div>
     
 </body>
 </html>

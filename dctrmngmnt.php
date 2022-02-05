@@ -1,27 +1,34 @@
-<?php include ('connection.php') ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="admn.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        
-    </style>
-    
-</head>
-
-<body>
-    
+<?php include ('admin-top.php') ?>
+   
 
 <?php 
+
+    if(isset($_POST['submit'])){
+        $name=$_POST['name'];
+        $exp=$_POST['exp'];
+        $fees=$_POST['fees'];
+        $contact=$_POST['contact'];
+        $edu=$_POST['education'];
+        $hspl=$_POST['hspl'];
+        $field=$_POST['field'];
+        $imgsrc=$_POST['img'];
+        if(empty($_POST['is_active'])){
+            $is_active='False';
+        }
+        else{
+            $is_active='True';
+        }
+
+        $query="INSERT INTO doctor(name,exp,fees,contact,education,hspl,field,is_active,img) VALUES('$name','$exp','$fees','$contact','$edu','$hspl','$field','$is_active','$imgsrc')";
+        $result=mysqli_query($conn,$query);
+        if($result){
+            echo "<script>alert('doctor added successfully')</script>";
+        }
+        else{
+            echo "Error: ".$query."<br>".mysqli_error($conn);
+            echo "<script>alert('doctor not added')</script>";
+        }
+    }
 
     if(isset($_POST['false'])){
         $id = $_REQUEST['id'];
@@ -117,11 +124,59 @@
             </table>
         
         </div>
-        <center><div class="admin_button"><a href="admin.php">Back to Admin</a></center>
+        
+    </div>
+
+    <div class="div-add">
+        <div align="center">
+            <h3>ADD&ensp;DOCTOR</h3>
         </div>
+        <div>
+            <form action="dctrmngmnt.php" method="POST">
+                <table width="100%"cellspacing="20">
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="name" required></td>
+                    </tr>
+                    <tr>
+                        <td>Experience</td>
+                        <td><input type="text" name="exp" required></td>
+                    </tr>
+                    <tr>
+                        <td>Education</td>
+                        <td><input type="text" name="education" required></td>
+                    </tr>
+                    <tr>
+                        <td>Hospital</td>
+                        <td><input type="text" name="hspl" required></td>
+                    </tr>
+                    <tr>
+                        <td>Specilization</td>
+                        <td><input type="text" name="field" required></td>
+                    </tr>
+                    <tr>
+                        <td>Fees</td>
+                        <td><input type="text" name="fees" required></td>
+                    </tr>
+                    <tr>
+                        <td>Contact</td>
+                        <td><input type="text" name="contact" required></td>
+                    </tr>
+                    <tr>
+                        <td>Image</td>
+                        <td><input type="file" name="img" required></td>
+                    </tr>
+                    <tr>
+                        <td>IsActive</td>
+                        <td><input type="checkbox" name="is_active" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="submit" value="ADD"></td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
 
-
-    </body>
-</html>
+<?php include ('admin-footer.html'); ?>

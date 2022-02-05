@@ -2,9 +2,21 @@
 <?php include ('navbar.html') ?>
 
 
-    <div class="line">
-    <h3>Welcome Guest,</h3>
-</div>
+    
+<?php
+
+if(isset($_SESSION['name'])){
+    echo '<div class="line">
+    <h3>Welcome '.$_SESSION['name'].',</h3>
+    </div>';
+}
+else{
+    echo '<div class="line">
+    <h3>Welcome , Guest</h3>
+    </div>';
+}
+
+?>
 
 <center><img style="border-radius:20px;height: 300px;width:auto;margin-top:20px" src="images/banner/banner1.jpg" alt="DOCTOR CONSULTATION"></center>
 <center>

@@ -76,18 +76,34 @@
                 </li>
 
             </div>
-            <div>
+            <?php 
+            session_start();
+            if(isset($_SESSION['user'])){
+                echo '<div>
                 <li>
-                    &nbsp; <a href="login.html">Login</a> &nbsp;
-                </li>
+                    &nbsp; <a href="logout.php">Logout</a> &nbsp;
+                </li>';
+            }
+            else{
+                echo '<div>
+                    <li>
+                        &nbsp; <a href="login.php">Login</a> &nbsp;
+                    </li>
+                    
+                </div>
+                <div>
+                    <li>
+                        &nbsp; <a href="signup.php">Signup</a> &nbsp;
+                    </li>
+    
+                </div>  ';
+            }
+            
 
-            </div>
-            <div>
-                <li>
-                    &nbsp; <a href="signup.html">Signup</a> &nbsp;
-                </li>
+            ?>
 
-            </div>
+
+
             <div id="search">
                 <li>
                     <form action=" #">

@@ -1,22 +1,30 @@
 <?php include ('connection.php') ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="admn.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-</head>
 
-<body>
 <?php 
+
+    if(isset($_POST['submit'])){
+        $name=$_POST['name'];
+        $contact=$_POST['contact'];
+        $address=$_POST['address'];
+        $place=$_POST['place'];
+        $imgsrc=$_POST['img'];
+        if(empty($_POST['is_active'])){
+            $is_active='False';
+        }
+        else{
+            $is_active='True';
+        }
+        $sql="INSERT INTO hospital(name, contact, address, place, is_active, img) VALUES ('$name','$contact','$address','$place','$is_active','$imgsrc')";
+        $result=mysqli_query($conn,$sql);
+        if($result){
+            echo "Data Inserted";
+        }
+        else{
+            echo "Data Not Inserted";
+        }
+    }
 
     if(isset($_POST['false'])){
         $id = $_REQUEST['id'];
@@ -43,6 +51,8 @@
     }
         
 ?>
+
+<?php include ('admin-top.php') ?>
 
 
  <div class="div1">
@@ -107,10 +117,47 @@
             </table>
            
         </div>
-        <center><div class="admin_button"><a href="admin.php">Back to Admin</a></center>
-        </div>
-        </div>
+        
     </div>
 
-    </body>
-</html>
+    <div class="div-add">
+        <div align="center">
+            <h3>ADD HOSPITAL</h3>
+        </div>
+        <div>
+            <form action="hsptlmngmt.php" method="POST" enctype="multipart/form-data">
+                <table align="center" width="100%" cellspacing="5px" cellpadding="5px">
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="name" placeholder="Enter Name" required></td>
+                    </tr>
+                    <tr>
+                        <td>Place</td>
+                        <td><input type="text" name="place" placeholder="Enter Place" required></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><input type="text" name="address" placeholder="Enter Address" required></td>
+                    </tr>
+                    <tr>
+                        <td>Contact</td>
+                        <td><input type="text" name="contact" placeholder="Enter Contact" required></td>
+                    </tr>
+                    <tr>
+                        <td>Image</td>
+                        <td><input type="file" name="img" ></td>
+                    </tr>
+                    <tr>
+                        <td>IsActive</td>
+                        <td><input type="checkbox" name="is_active" placeholder="Enter IsActive" ></td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="submit" value="Submit"></td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+
+<?php include ('admin-footer.html') ?>
