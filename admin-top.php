@@ -1,17 +1,16 @@
 <?php include ('connection.php') ?>
 
-
-<!-- redirect the page if its not a admin -->
-
 <?php 
+    session_start();
 
-    // if(isset($_SESSION['admin'])){
-    //     echo "<script>alert('welcome back admin')</script>";
-    // }
-    // else{
-    //     echo "<script>alert('you are not an admin')</script>";
-    //     header("Location: home.php");
-    // }
+    if($_SESSION['name']=='admin'){
+        echo "<script>alert('welcome admin')</script>";
+    }
+    else{
+        echo "<script>alert('you are not an admin')</script>";
+        header("Location: home.php");
+    }
+    
 
 ?>
 

@@ -4,7 +4,7 @@
 
     
 <?php
-
+session_start();
 if(isset($_SESSION['name'])){
     echo '<div class="line">
     <h3>Welcome '.$_SESSION['name'].',</h3>
