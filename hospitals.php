@@ -82,28 +82,32 @@
         <td>
         <img src="'.$imgsrc.'" alt="hospital">
                 
-            </td>
-            <td align="center">
-                <h3>'.$name.'</h3>
-                <p><b>'.$address.'</p>
-                <p><b>Contact:</b>'.$contact.'</p>
-                </td>
-                <td align="center">
-                <h3>Specilization</h3>
-                <p>Cardiology</p>
-                <p>Neurology</p>
-                <p>Orthopedics</p>
-                
-                </td>
-                </div>
-                </tr>
-                <tr>
-                <td colspan="3" ><button formaction="#">View full details</button></td>
-                </tr>
-                <tr>
-                <td colspan="3"><hr></td>
-                </tr>
-                ';
+        </td>
+        <td align="center">
+        <h3>'.$name.'</h3>
+        <p><b>'.$address.'</p>
+        <p><b>Contact:</b>'.$contact.'</p>
+        </td>
+        <td align="center">
+        <h3>Specilization</h3>';
+        $sql1="SELECT DISTINCT field from doctor where hspl='$name'";
+        $retval1 = mysqli_query( $conn, $sql1);
+        $rows1 = mysqli_fetch_all($retval1, MYSQLI_ASSOC );
+        foreach((array)$rows1 as $row1){
+            $field=$row1['field'];
+            echo '<p>'.$field.'</p>';
+        }
+        echo '        
+        </td>
+        </div>
+        </tr>
+        <tr>
+        <td colspan="3" ><button formaction="#">View full details</button></td>
+        </tr>
+        <tr>
+        <td colspan="3"><hr></td>
+        </tr>
+        ';
     }
 ?>
 </table></center>
