@@ -10,13 +10,14 @@
         $address=$_POST['address'];
         $place=$_POST['place'];
         $imgsrc=$_POST['img'];
+        $img="images/hsptls/".$imgsrc;
         if(empty($_POST['is_active'])){
             $is_active='False';
         }
         else{
             $is_active='True';
         }
-        $sql="INSERT INTO hospital(name, contact, address, place, is_active, img) VALUES ('$name','$contact','$address','$place','$is_active','$imgsrc')";
+        $sql="INSERT INTO hospital(name, contact, address, place, is_active, img) VALUES ('$name','$contact','$address','$place','$is_active','$img')";
         $result=mysqli_query($conn,$sql);
         if($result){
             echo "Data Inserted";

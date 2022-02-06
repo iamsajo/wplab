@@ -3,10 +3,7 @@
 <?php 
     session_start();
 
-    if($_SESSION['name']=='admin'){
-        echo "<script>alert('welcome admin')</script>";
-    }
-    else{
+    if($_SESSION['name']!='admin'){
         echo "<script>alert('you are not an admin')</script>";
         header("Location: home.php");
     }

@@ -12,6 +12,7 @@
         $hspl=$_POST['hspl'];
         $field=$_POST['field'];
         $imgsrc=$_POST['img'];
+        $img="images/dr-pic/".$imgsrc;
         if(empty($_POST['is_active'])){
             $is_active='False';
         }
@@ -19,7 +20,7 @@
             $is_active='True';
         }
 
-        $query="INSERT INTO doctor(name,exp,fees,contact,education,hspl,field,is_active,img) VALUES('$name','$exp','$fees','$contact','$edu','$hspl','$field','$is_active','$imgsrc')";
+        $query="INSERT INTO doctor(name,exp,fees,contact,education,hspl,field,is_active,img) VALUES('$name','$exp','$fees','$contact','$edu','$hspl','$field','$is_active','$img')";
         $result=mysqli_query($conn,$query);
         if($result){
             echo "<script>alert('doctor added successfully')</script>";
